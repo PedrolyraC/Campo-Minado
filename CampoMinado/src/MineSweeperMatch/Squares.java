@@ -8,5 +8,14 @@ public class Squares {
     private boolean bomb;
 
 
+    public SquareSymbol setFlag(){
+
+    }
+
+    public SquareSymbol removeFlag(){
+
+    }
+
+    public
 }
 

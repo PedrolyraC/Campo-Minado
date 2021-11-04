@@ -11,13 +11,23 @@ public class Match {
         score = 0;
     }
 
-
-
     public boolean[][] gameOver(){
 
     }
 
     public Squares choosenSquare(){
+
+    }
+
+    public GameBoard newBoard(){
+
+    }
+
+    public boolean possibleMoves(){
+
+    }
+
+    public int clearScreen(){
 
     }
 }
