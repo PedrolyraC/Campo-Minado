@@ -10,8 +10,11 @@ public class GameBoard {
 
     }
 
-    public Squares mapGenerator(){
-        
+    public int newBoard(){
+
     }
 
+    public int printBoard(){
+
+    }
 }

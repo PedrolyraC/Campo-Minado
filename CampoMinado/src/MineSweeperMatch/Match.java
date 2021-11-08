@@ -11,15 +11,15 @@ public class Match {
         score = 0;
     }
 
+    public int matchScore(){
+
+    }
+
     public boolean[][] gameOver(){
 
     }
 
     public Squares choosenSquare(){
-
-    }
-
-    public GameBoard newBoard(){
 
     }
 
