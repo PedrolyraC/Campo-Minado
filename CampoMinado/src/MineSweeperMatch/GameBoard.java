@@ -37,14 +37,19 @@ public class GameBoard {
     }
 
     public Squares bombGenerator(){
-
+        return null;
     }
 
     public int newBoard(){
-
+        return 0;
     }
 
     public int printBoard(){
-
+        return 0;
     }
+
+    public boolean isValidCoord(int x, int y){
+        return (x >= 0 && x<this.getRows() && y>=0 && y<=this.getColumns());
+    }
+
 }

@@ -25,13 +25,11 @@ public class Squares {
     }
 
     public SquareSymbol setFlag(){
-
+        return null;
     }
 
     public SquareSymbol removeFlag(){
-
+        return null;
     }
-
-    public
 }
 
