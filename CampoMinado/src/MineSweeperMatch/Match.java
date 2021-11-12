@@ -11,6 +11,30 @@ public class Match {
         score = 0;
     }
 
+    public GameBoard getBoard() {
+        return board;
+    }
+
+    public void setBoard(GameBoard board) {
+        this.board = board;
+    }
+
+    public int getPlaysMade() {
+        return playsMade;
+    }
+
+    public void setPlaysMade(int playsMade) {
+        this.playsMade = playsMade;
+    }
+
+    public long getScore() {
+        return score;
+    }
+
+    public void setScore(long score) {
+        this.score = score;
+    }
+
     public int matchScore(){
 
     }
