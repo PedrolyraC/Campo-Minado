@@ -4,6 +4,7 @@ public class Match {
     private GameBoard board;
     private int playsMade;
     private long score;
+    private long time;
     private String playerName;
     //Número de jogadas
 
@@ -12,6 +13,14 @@ public class Match {
         this.board = new GameBoard();
         this.playsMade = 0;
         this.score = 0;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
     }
 
     public GameBoard getBoard() {
@@ -67,6 +76,10 @@ public class Match {
     }
 
     public void gameStatus(){
+
+    }
+
+    public void quitMatch(){
 
     }
 }

@@ -15,4 +15,8 @@ public class MenuInteractions {
     public static void showRanking(){
 
     }
+
+    public void quitGame(){
+
+    }
 }

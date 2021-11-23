@@ -32,6 +32,16 @@ public class Squares {
 
     }
 
-    public
+    public SquareSymbol whiteSpace(){
+
+    }
+
+    public int squareNumber(){
+
+    }
+
+    public void inBombSide(){
+
+    }
 }
 
