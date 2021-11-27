@@ -1,18 +1,56 @@
 package MineSweeperMatch;
 
+import java.lang.System;
+import java.util.Scanner;
+import Enums.*;
+
 public class Match {
     private GameBoard board;
     private int playsMade;
     private long score;
-    private long time;
     private String playerName;
-    //Número de jogadas
+    private Level level;
+    private long time;
+    private boolean gameOver;
 
-    public Match(String playerName) {
+    public Match(String playerName, Level level) {
         this.playerName = playerName;
-        this.board = new GameBoard();
+        this.level = level;
+        this.board = new GameBoard(this.level);
         this.playsMade = 0;
         this.score = 0;
+        this.time = 0;
+        this.gameOver = false;
+    }
+
+    public void startMatch(){
+        long startTime = System.nanoTime();
+
+        // Main match loop
+        while (!this.isGameOver()) {
+            System.out.println(this.board);
+            break;
+        }
+
+        long endTime =  System.nanoTime();
+        this.time = endTime - startTime;
+    }
+
+    public void play(){
+        /*
+        int x, y;
+        Scanner sc = new Scanner(System.in);
+        long startTime = System.nanoTime();
+        System.out.println("Entre com a posição X: ");
+        x = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Entre com a posição Y: ");
+        y = sc.nextInt();
+        sc.nextLine();
+        long endTime = System.nanoTime();
+        this.time = (int)(endTime - startTime)/1000000;
+        this.coord = new Coordinates(x, y);
+        */
     }
 
     public long getTime() {
@@ -56,23 +94,23 @@ public class Match {
     }
 
     public int matchScore(){
-
+        return 0;
     }
 
-    public boolean[][] gameOver(){
-
+    public boolean isGameOver(){
+        return this.gameOver;
     }
 
     public Squares choosenSquare(){
-
+        return null;
     }
 
     public boolean possibleMoves(){
-
+    return false;
     }
 
     public int clearScreen(){
-
+        return 0;
     }
 
     public void gameStatus(){

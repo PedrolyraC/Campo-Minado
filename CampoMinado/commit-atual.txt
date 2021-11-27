@@ -1,0 +1,4 @@
+1-demilitar as dificuldades e os tamanhos do tabuleiro
+2-modificação das celulas dos tabuleiros (transformar uma celula em outra coisa ao clicar)
+3-implementar bandeiras
+4- abrir as celulas ao redor de uma celula que nao tem bomba (abrir um espaço grande)
