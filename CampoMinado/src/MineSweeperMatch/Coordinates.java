@@ -1,5 +1,7 @@
 package MineSweeperMatch;
 
+import java.util.Objects;
+
 public class Coordinates {
 
     private int x;
@@ -29,5 +31,9 @@ public class Coordinates {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public boolean isEqual(Coordinates coord){
+        return (this.getX() == coord.getX() && this.getY() == coord.getY());
     }
 }

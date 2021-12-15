@@ -44,38 +44,25 @@ public class GameBoard {
         return rows;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
     public int getColumns() {
         return columns;
-    }
-
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
-
-    public Squares[][] getBoard() {
-        return board;
-    }
-
-    public void setBoard(Squares[][] board) {
-        board = board;
     }
 
     public boolean getChoosened(Coordinates coord) {
         return this.choosened[coord.getX()][coord.getY()];
     }
 
-    public void setChoosened(Coordinates coord,boolean flag) throws EmptySquareChoosenedException, TryToChooseFlagSquareException {
+    public void setChoosened(Coordinates coord,boolean flag) throws EmptySquareChoosenedException,
+            TryToChooseFlagSquareException {
 
         if (flag) {
             if (!this.board[coord.getX()][coord.getY()].isFlag()
                     || !this.board[coord.getX()][coord.getY()].isEmpty()) {
                 this.board[coord.getX()][coord.getY()].setFlag();
             } else if (this.board[coord.getX()][coord.getY()].isEmpty()) {
-                this.board[coord.getX()][coord.getY()].setSquare(SquareSymbol.EMPTY);
+                this.board[coord.getX()][coord.getY()].isEmpty();
+            } else if (this.board[coord.getX()][coord.getY()].isFlag()){
+                this.board[coord.getX()][coord.getY()].setSquare(SquareSymbol.WHITESPACE);
             }
         } else {
             if (!this.board[coord.getX()][coord.getY()].isFlag()
@@ -97,14 +84,6 @@ public class GameBoard {
         }
     }
 
-    public int getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
-
     public Squares getSquare(Coordinates coords){
         return this.board[coords.getX()][coords.getY()];
     }
@@ -115,6 +94,40 @@ public class GameBoard {
 
     public boolean isEmpty(Coordinates coord){
         return this.board[coord.getX()][coord.getY()].isEmpty();
+    }
+
+    public  int nearbyBombsCounter(Coordinates coords){
+        int counter = 0;
+        for (int i = coords.getX()-1; i <= coords.getX()+1; i++){
+            for (int j = coords.getY()-1; j <= coords.getY()+1; j++){
+                if (i >= 0 && i < this.getRows() && j >= 0 && j < this.getColumns()
+                && !(new Coordinates(i, j).isEqual(coords))){
+                    if (this.isBomb(new Coordinates(i, j))){
+                        counter += 1;
+                    }
+                }
+            }
+        }
+        return counter;
+    }
+
+    public void openSquares(Coordinates coords){
+        int bombs = this.nearbyBombsCounter(coords);
+        if (bombs == 0) {
+            this.board[coords.getX()][coords.getY()].setSquare(SquareSymbol.EMPTY);
+            for (int i = coords.getX()-1; i <= coords.getX()+1; i++){
+                for (int j = coords.getY()-1; j <= coords.getY()+1; j++) {
+                    if ( i  >= 0 && i < this.getRows() && j >= 0 && j < this.getColumns()
+                        && !(new Coordinates(i , j).isEqual(coords)) && this.board[i][j].getSquare() == SquareSymbol.WHITESPACE)
+                        {
+                            this.openSquares(new Coordinates(i, j));
+                        }
+                    }
+                }
+        } else {
+            this.board[coords.getX()][coords.getY()].setSquare(SquareSymbol.NUMBER);
+            this.board[coords.getX()][coords.getY()].setNumber(bombs);
+        }
     }
 
     public boolean bombGenerator(){

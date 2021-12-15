@@ -3,12 +3,10 @@ package MineSweeperMatch;
 import Enums.SquareSymbol;
 import Exceptions.EmptySquareChoosenedException;
 import Exceptions.OutOfTheBoardException;
-import Game.MenuInteractions;
-
 
 import java.util.Scanner;
 
-public class Match {
+public class Match implements Comparable {
     private GameBoard board;
     private int playsMade;
     private long score;
@@ -112,33 +110,32 @@ public class Match {
     public void startMatch(){
         Scanner sc = new Scanner(System.in);
         long startTime = System.nanoTime();
-        Coordinates coord;
+        Coordinates coords;
         boolean flag;
 
         while (!this.isGameOver() && !this.winner()) {
             this.gameStatus();
             System.out.println();
-            coord = this.choosenSquare(sc);
-
-            Squares choosedSquare = this.board.getSquare(coord);
+            coords = this.choosenSquare(sc);
 
             System.out.println("FLAG(Y/N): ");
 
             String s = sc.nextLine().trim();
 
-            if (!this.board.getChoosened(coord)){
+            if (!this.board.getChoosened(coords)){
                 if (s.charAt(0) == 'n') {
-                    this.board.setChoosened(coord, false);
-                    if (this.board.isBomb(coord)) {
+                    this.board.setChoosened(coords, false);
+                    if (this.board.isBomb(coords)) {
                         this.gameOver = true;
                         System.out.println("GAME OVER");
                     } else {
+                        this.board.openSquares(coords);
                         this.score++;
                     }
                     this.score++;
                 }
                 else if (s.charAt(0) == 'y'){
-                    this.board.setChoosened(coord, true);
+                    this.board.setChoosened(coords, true);
                     this.score++;
                 }
             }
@@ -162,7 +159,6 @@ public class Match {
                 && coord.getY() >= 0 && coord.getY() < this.board.getColumns()))
         {
             throw new OutOfTheBoardException();
-
         }
         if (this.board.isEmpty(coord)){
             throw new EmptySquareChoosenedException();
@@ -202,14 +198,25 @@ public class Match {
     }
 
     public void gameStatus(){
+
         System.out.print(this.board);
         System.out.println();
-        System.out.println("PLAYER " + this.playerName.toUpperCase() +"\nROUND " + this.getPlaysMade() + "\nSCORE " + this.getScore());
+        System.out.println("PLAYER " + this.playerName.toUpperCase() +"\nROUND "
+                + this.getPlaysMade() + "\nSCORE " + this.getScore() + "\nTIME " );
     }
 
     public void quitMatch(){
         //pegue pontuação, tempo e nome
         clearScreen();
         MenuInteractions.menu();
+    }
+
+    public void savedGame(){
+
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
