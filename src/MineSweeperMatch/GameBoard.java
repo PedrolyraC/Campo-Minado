@@ -132,7 +132,7 @@ public class GameBoard {
         int probability = 0;
         switch (this.difficulty){
             case 1:
-                probability = 2; /// mudar para 10 , o valor original
+                probability = 10; 
                 break;
             case 2:
                 probability = 18;
