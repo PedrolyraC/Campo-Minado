@@ -14,7 +14,6 @@ public abstract class MenuInteractions implements GameStyle {
                   "1)\tPLAY\n"
                 + "2)\tRANKING\n"
                 + "3)\tEXIT\n");
-
     }
 
     public static Match traditional() throws IOException {
@@ -44,7 +43,6 @@ public abstract class MenuInteractions implements GameStyle {
                 dificulty = 3;
                 break;
         }
-
         Match.clearScreen();
         Match match = new Match(playerName, dificulty);
         match.startMatch();
@@ -79,12 +77,10 @@ public abstract class MenuInteractions implements GameStyle {
                 dificulty = 3;
                 break;
         }
-
         Match.clearScreen();
         Match match = new Match(playerName, dificulty);
         match.startMatch();
         return match;
-
     }
 
     public static void showRanking(ArrayList<Match> matches) throws IOException {

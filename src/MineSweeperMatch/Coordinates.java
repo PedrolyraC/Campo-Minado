@@ -14,11 +14,9 @@ public class Coordinates {
         return x;
     }
 
-
     public int getY() {
         return y;
     }
-
 
     public boolean isEqual(Coordinates coord){
         return (this.getX() == coord.getX() && this.getY() == coord.getY());

@@ -13,7 +13,6 @@ public class GameBoard {
     private int difficulty;
 
     public GameBoard(int difficulty) {
-
         this.difficulty = difficulty;
         switch (this.difficulty){
             case 1:
